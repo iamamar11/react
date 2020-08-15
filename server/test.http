@@ -1,0 +1,18 @@
+GET http://localhost:4200/tracks
+Accept: application/json
+
+###
+# asking for specific user with ID
+POST http://localhost:4200/tracks
+Content-Type: application/json
+
+{
+    "playlist_id": "Country",
+    "title": "whatwever",
+    "uri": "spotify/song/eminem"
+}
+
+###
+DELETE  http://localhost:4200/tracks/12
+Content-Type: application/json
+
