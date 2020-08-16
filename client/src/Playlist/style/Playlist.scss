@@ -1,0 +1,21 @@
+.listConatiner{
+    background-color: red;
+    padding: 10px;
+    .itemList{
+        background-color: pink;
+        margin: 5px 0px;
+        padding: 10px 0px;
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        grid-template-rows: none;
+        span,p{
+            padding: 10px;
+        }
+        
+        button{
+            width: 100px;
+            padding: 8px;
+        }
+    }
+
+}

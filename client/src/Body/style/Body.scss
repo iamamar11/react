@@ -1,0 +1,16 @@
+
+.mainContainer{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 5px;
+    .customDiv{
+        background-color: white;
+        width: 225px;
+        height: 250px;
+        margin: 0 auto;
+        text-align: center;
+        padding: 10px;
+    }
+}
+
+

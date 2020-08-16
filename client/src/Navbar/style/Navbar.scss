@@ -1,0 +1,28 @@
+$headerColor : #333;
+header{
+    height: 50px;
+    background-color: $headerColor;
+    color: white;
+    display: flex;
+    align-items: center;
+    span{
+        flex: 1;
+        padding-left: 30px;
+    }
+    nav{
+        flex: 2;
+        ul{
+            list-style: none;    
+            display: flex;
+            justify-content: center; 
+            li{
+                padding: 20px;
+                a{
+                    color: white;
+                    text-decoration: none;
+                }
+            }
+        }
+    }
+
+}
