@@ -22,13 +22,12 @@ class Search extends Component{
         });
         return optionTag;
     }
-
+    // GEtting the option
     handleSelectChange = (event) => {
         this.setState({
           result: event.target.value
         })
       }
-
     // Adding to playlist
     AddToTrack = async(title,uri) => {
         console.log(title,uri,this.state.result);
@@ -48,7 +47,6 @@ class Search extends Component{
         } catch (error) {
             console.log(error.message);
         }
-        
     }
     // fetching from remote API
     async fetchData(){
