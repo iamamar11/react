@@ -11,7 +11,6 @@ class Search extends Component{
         }
         this.myRef = React.createRef();
     }
-
     // fetching enteries for creating the drop down menu
     fetchPlaylistName = async() => {
         const API_URL = "http://localhost:3001/playlist";
@@ -43,7 +42,6 @@ class Search extends Component{
             })
         })
         const result = await response.json();
-        console.log(result);
         } catch (error) {
             console.log(error.message);
         }
