@@ -4,6 +4,16 @@ const pool = require('../db');
 const router = express.Router({
     caseSensitive: false
 });
+// 
+router.route('/playlist')
+    .get( async( req,res ) => {
+        try {
+            const tableData = await pool.query("SELECT title, id FROM playlist");
+            res.json(tableData.rows);
+        } catch (error) {
+            console.log(error.message);
+        }
+    })
 
 router.route('/tracks')
     .get( async( req,res ) => {

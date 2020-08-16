@@ -13,7 +13,7 @@ class Playlist extends Component{
         console.log(DELETE_API);
         const respone = await fetch(DELETE_API, {method : 'delete'});
         const result = await respone.text();
-        console.log(result)
+        console.log(result);
         this.componentDidMount()
     }
 
@@ -22,11 +22,10 @@ class Playlist extends Component{
         const response = await fetch(API_URL, {method: 'GET'});
         const jsonData = await response.json();
         const result = jsonData.map((element, index) => {
-            return  <div className="itemList" key={element.id}>    
-                        <p>{element.title}</p>
-                        <span>{element.id}</span>
-                        <button onClick={() => this.deleteItem(element.id)}>DELETE</button>
-                    </div>
+            return  <tr className="tableRow" key={element.id}>    
+                        <td>{element.title}</td>
+                        <td><button onClick={() => this.deleteItem(element.id)}>DELETE</button></td>
+                    </tr>
             });
         return result;
     }
@@ -39,9 +38,9 @@ class Playlist extends Component{
 
     render(){
         return(
-            <div className="listConatiner">
+            <table className="listConatiner">
                 {this.state.jsxData}
-            </div>
+            </table>
         );
     }
 }

@@ -2,6 +2,10 @@ GET http://localhost:3001/tracks
 Accept: application/json
 
 ###
+GET http://localhost:3001/playlist
+Accept: application/json
+
+###
 # asking for specific user with ID
 POST http://localhost:3001/tracks
 Content-Type: application/json

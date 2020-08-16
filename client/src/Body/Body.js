@@ -13,11 +13,11 @@ class Body extends Component{
         const API_URL = 'https://api.discogs.com/database/search?search=nirvana&token=YlxRiqANcYIZpHOYhYEpNcqSftCXmUFQfnfJMuNi'
         const response = await fetch(API_URL, { method: 'GET' })
         const jsonData = await response.json();
+        console.log(jsonData.results)
         const data = (jsonData.results).map((element, index) => {
-            return <div key={index} className="customDiv">
+            return <div key={index} className="customDivBody">
                     <img src={element.thumb} alt="Lost SomeWhere"/>
                     <h3>{element.title}</h3>
-                    <span>{element.id}</span>
                 </div>
             });
         return data;
@@ -25,7 +25,6 @@ class Body extends Component{
 
     componentDidMount(){
         this.fetchData().then(data =>{
-            console.log(data);
             this.setState({datajsx : data})
         })
     }
@@ -33,7 +32,7 @@ class Body extends Component{
     render(){
         return(
             <div>
-                <div className="mainContainer">
+                <div className="mainContainerBody">
                     {this.state.datajsx}
                 </div>
             </div>

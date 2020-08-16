@@ -1,20 +1,25 @@
+@import '../../style/mixins.scss';
+
 .listConatiner{
-    background-color: red;
-    padding: 10px;
-    .itemList{
-        background-color: pink;
-        margin: 5px 0px;
-        padding: 10px 0px;
-        display: grid;
-        grid-template-columns: repeat(3, 1fr);
-        grid-template-rows: none;
+    background-color: lightgray;
+    padding: 15px;
+    width: 70%;
+    margin: 20px auto;
+    border-radius: 10px;
+    box-shadow: 5px 3px 10px 2px gray;
+    .tableRow{
+        background-color: #f3f3f3;
+        text-align: center;
+        line-height: 45px;
         span,p{
             padding: 10px;
         }
         
         button{
+            @include button(red);
             width: 100px;
-            padding: 8px;
+            padding: 10px 8px;
+
         }
     }
 

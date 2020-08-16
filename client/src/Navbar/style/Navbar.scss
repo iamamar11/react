@@ -1,4 +1,11 @@
+@import '../../style/mixins.scss';
 $headerColor : #333;
+
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
 header{
     height: 50px;
     background-color: $headerColor;
@@ -16,10 +23,20 @@ header{
             display: flex;
             justify-content: center; 
             li{
-                padding: 20px;
-                a{
-                    color: white;
-                    text-decoration: none;
+                padding: 0px 30px;
+                button{
+                    @include button(green);
+                    padding : 8px 20px
+                }
+                input{
+                    margin-top: 5px;
+                    padding: 3px 0px;
+                    outline: none;
+                }
+                input[type="submit"]{
+                    @include button(green);
+                    padding: 5px 8px;
+                    margin-left: 10px ;
                 }
             }
         }

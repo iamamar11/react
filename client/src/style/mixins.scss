@@ -1,0 +1,9 @@
+@mixin button($color) {
+    background-color: $color;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    &:hover{
+        transform: scale(1.01);
+    }
+}

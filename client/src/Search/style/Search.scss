@@ -1,17 +1,16 @@
-.mainContainer{
-    display: flex;
-    flex-wrap: wrap;
-    padding: 5px;
-    // background-color: #333;
-    .customDiv{
-        background-color: rgb(214, 213, 213);
-        width: 200px;
-        height: 280px;
-        margin: 10px auto;
-        text-align: center;
-        padding: 40px 10px;
-        border-radius: 3px;
-        box-shadow: 3px 2px 3px 1px gray;
+@import '../../style/mixins.scss';
+
+
+.customDivBody{
+    p{
+        margin-top: 15px;
+    }
+    select{
+        margin-top: 20px;
+    }
+    button{
+        @include button(orange);
+        padding: 5px 20px;
+        margin-left: 15px;
     }
 }
-

@@ -5,7 +5,7 @@ import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import Navbar from './Navbar/Navbar';
 import Body from './Body/Body';
 import Playlist from './Playlist/Playlist';
-import './index.css';
+import './style/mixins.scss'
 import Search from './Search/Search';
 
 
