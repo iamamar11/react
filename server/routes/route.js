@@ -16,10 +16,15 @@ router.route('/tracks')
     })
     .post( async( req,res )=>{
         try {
-            const {  uri, title } = req.body;
+            const {  uri, title, playlist_id } = req.body;
+            console.log(playlist_id);
+            const getplaylistId = await pool.query(
+                "SELECT id from playlist WHERE title = ($1)",[playlist_id]
+            );
+            console.log(getplaylistId.rows[0].id);
             console.log(uri, title) ;
             const newTrack = await pool.query(
-                "INSERT INTO track ( title, uri ) VALUES ($1, $2) RETURNING * " ,[ title, uri]
+                "INSERT INTO track ( playlist_id ,title, uri ) VALUES ($1, $2, $3) RETURNING * " ,[getplaylistId.rows[0].id, title, uri]
             );
             res.json(newTrack.rows[0]);
         } catch (err) {

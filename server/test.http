@@ -1,18 +1,18 @@
-GET http://localhost:4200/tracks
+GET http://localhost:3001/tracks
 Accept: application/json
 
 ###
 # asking for specific user with ID
-POST http://localhost:4200/tracks
+POST http://localhost:3001/tracks
 Content-Type: application/json
 
 {
-    "playlist_id": "Country",
+    "playlist_id": "Pop/Dance",
     "title": "whatwever",
     "uri": "spotify/song/eminem"
 }
 
 ###
-DELETE  http://localhost:4200/tracks/12
+DELETE  http://localhost:3001/tracks/15
 Content-Type: application/json
 
