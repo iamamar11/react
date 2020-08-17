@@ -1,45 +1,48 @@
 @import '../../style/mixins.scss';
-$headerColor : #333;
+@import url('https://fonts.googleapis.com/css2?family=Cabin:wght@500&display=swap');
+
+$headerColor : rgba(200,200,200,.65);
 
 *{
     padding: 0;
     margin: 0;
     box-sizing: border-box;
+    text-decoration: none;
+    font-family: 'Cabin', sans-serif;
 }
+
 header{
-    height: 50px;
+    height: 10vh;
     background-color: $headerColor;
-    color: white;
+    color: black;
     display: flex;
     align-items: center;
-    span{
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    .fab{
         flex: 1;
         padding-left: 30px;
+        color: black;
+        span{
+            margin-left: 5px;
+        }
     }
     nav{
         flex: 2;
         ul{
-            list-style: none;    
+            list-style: none;   
             display: flex;
             justify-content: center; 
             li{
-                padding: 0px 30px;
-                button{
-                    @include button(green);
-                    padding : 8px 20px
-                }
-                input{
-                    margin-top: 5px;
-                    padding: 3px 0px;
-                    outline: none;
-                }
-                input[type="submit"]{
-                    @include button(green);
-                    padding: 5px 8px;
-                    margin-left: 10px ;
+                padding: 0px 40px;
+                color: black;
+                font-size: 22px;
+                font-family: 'Cabin', sans-serif;
+                &:hover{
+                    color: darkgreen;
                 }
             }
         }
     }
-
 }

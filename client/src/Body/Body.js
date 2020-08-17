@@ -1,40 +1,25 @@
 import React, {Component} from 'react';
+import { Link } from 'react-router-dom';
 import './style/Body.scss';
 
 class Body extends Component{
-    constructor(props) {
+
+    constructor(props){
         super(props)
-        this.state = {
-            datajsx: []     
-        }
+        this.state = {value: ''}
     }
-
-    async fetchData(props){
-        const API_URL = 'https://api.discogs.com/database/search?search=nirvana&token=YlxRiqANcYIZpHOYhYEpNcqSftCXmUFQfnfJMuNi'
-        const response = await fetch(API_URL, { method: 'GET' })
-        const jsonData = await response.json();
-        console.log(jsonData.results)
-        const data = (jsonData.results).map((element, index) => {
-            return <div key={index} className="customDivBody">
-                    <img src={element.thumb} alt="Lost SomeWhere"/>
-                    <h3>{element.title}</h3>
-                </div>
-            });
-        return data;
-        }
-
-    componentDidMount(){
-        this.fetchData().then(data =>{
-            this.setState({datajsx : data})
-        })
+    handleChange = (event) => {
+        this.setState({value: event.target.value});
     }
 
     render(){
         return(
-            <div>
-                <div className="mainContainerBody">
-                    {this.state.datajsx}
-                </div>
+            <div className="searchDiv">
+                <input type="text" name="search" placeholder="Enter Artist name" value={this.state.value} onChange={this.handleChange} />
+                <Link to={{pathname: `/search/${this.state.value}`, params:{name: this.state.value}}}>
+                    <i class="fas fa-search button"></i>
+                    {/* <input type="submit"/> */}
+                </Link>
             </div>
         );
     }

@@ -1,26 +1,50 @@
 @import '../../style/mixins.scss';
 
-.listConatiner{
-    background-color: lightgray;
-    padding: 15px;
-    width: 70%;
-    margin: 20px auto;
-    border-radius: 10px;
-    box-shadow: 5px 3px 10px 2px gray;
-    .tableRow{
-        background-color: #f3f3f3;
-        text-align: center;
-        line-height: 45px;
-        span,p{
-            padding: 10px;
-        }
-        
-        button{
-            @include button(red);
-            width: 100px;
-            padding: 10px 8px;
+.mainContainer::before{
+    content: '';
+    height: 100%;
+    width: 100%;
+    background-image: url('../../Photos/musicbg.jpg');
+    background-repeat: no-repeat;
 
+    background-size: cover;
+    background-position: 50% 30%;
+    filter: blur(2px);
+    position: absolute;
+    top: 0;
+
+}
+.mainContainer{
+    .listConatiner{
+        padding: 15px;
+        width: 70%;
+        margin: 0px auto;
+        border-radius: 10px;
+        box-shadow: 5px 3px 10px 2px gray;
+        position: absolute;
+        top: 150px;
+        left: calc((100% - 70%)/2);
+
+        .tableHead{
+            text-align: center;
+            background-color: #333;
+            color: white;
+            line-height: 45px;
+        }
+        .tableRow{
+            background-image: linear-gradient(to left, #21e6c1 ,#278ea5);;
+            color: white;
+            text-align: center;
+            line-height: 45px;
+            span,p{
+                padding: 10px;
+            }
+            button{
+                @include button(red);
+                width: 100px;
+                padding: 10px 8px;
+
+            }
         }
     }
-
 }

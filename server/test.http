@@ -12,11 +12,11 @@ Content-Type: application/json
 
 {
     "playlist_id": "Pop/Dance",
-    "title": "whatwever",
+    "title": "testing",
     "uri": "spotify/song/eminem"
 }
 
 ###
-DELETE  http://localhost:3001/tracks/15
+DELETE  http://localhost:3001/tracks/26
 Content-Type: application/json
 

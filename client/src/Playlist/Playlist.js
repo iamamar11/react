@@ -24,6 +24,7 @@ class Playlist extends Component{
         const result = jsonData.map((element, index) => {
             return  <tr className="tableRow" key={element.id}>    
                         <td>{element.title}</td>
+                        <td>{element.playlist_id}</td>
                         <td><button onClick={() => this.deleteItem(element.id)}>DELETE</button></td>
                     </tr>
             });
@@ -38,9 +39,18 @@ class Playlist extends Component{
 
     render(){
         return(
+            <div className="mainContainer">
             <table className="listConatiner">
-                {this.state.jsxData}
+                <thead className="tableHead">
+                    <td>Song Title</td>
+                    <td>Playlist Number</td>
+                    <td>Action</td>
+                </thead>
+                <tbody>
+                    {this.state.jsxData}
+                </tbody>
             </table>
+            </div>
         );
     }
 }
