@@ -3,11 +3,7 @@ import { Link } from 'react-router-dom';
 import './style/Navbar.scss';
 
 
-class Navbar extends Component{
-    constructor(props){
-        super(props)
-    }
-    
+class Navbar extends Component{   
     render(){
         return(
             <header>

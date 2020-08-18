@@ -18,7 +18,6 @@ class Body extends Component{
                 <input type="text" name="search" placeholder="Enter Artist name" value={this.state.value} onChange={this.handleChange} />
                 <Link to={{pathname: `/search/${this.state.value}`, params:{name: this.state.value}}}>
                     <i class="fas fa-search button"></i>
-                    {/* <input type="submit"/> */}
                 </Link>
             </div>
         );

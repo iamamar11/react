@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import './style/Search.scss';
+import CustomCard from '../CustomCard/CustomCard';
 
 class Search extends Component{
     constructor(porps) {
@@ -48,22 +49,23 @@ class Search extends Component{
             console.log(error.message);
         }
     }
+
+    
     // fetching from remote API
     async fetchData(){
         const API_URL = `https://api.discogs.com/database/search?key=HnJirdOZRXtwJMrRdDOF&secret=VXtumhgYtfRNxIjmDEMwCObNAQLkSmSh&artist="${this.props.match.params.id}"&country=canada`;
         const response = await fetch(API_URL, {method: 'GET'});
         const jsonData = await response.json();       
         const result = (jsonData.results).map((element, index) => {
-            return  <div className="customDivBody" key={index}>
-                        <img className="thumbnail" src={element.thumb} alt={element.thumb}/>  
-                        <p className='title'>{element.title}</p>
-                        <div className="options">
-                            <select className="selectOptions" onClick={this.handleSelectChange}>
-                                {this.state.jsxoption}
-                            </select>
-                            <i className="far fa-bookmark download" onClick={() => this.AddToTrack(element.title, element.uri)}></i>
-                        </div>
-                    </div>
+            return  (
+                <CustomCard index ={index}
+                    thumb = {element.thumb}
+                    title = {element.title}
+                    clickSelect = {this.handleSelectChange}
+                    clickButton = {this.AddToTrack}
+                    jsx = {this.state.jsxoption}
+                />
+            );
             });
         return result;
     }

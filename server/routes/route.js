@@ -5,6 +5,7 @@ const pool = require('../db');
 const router = express.Router({
     caseSensitive: false
 });
+
 // 
 router.route('/playlist')
     .get( async( req,res ) => {
@@ -32,6 +33,8 @@ router.route('/tracks')
             
             //* fetching Data from the track table to see if data already exist
             const response = await getData("track");
+
+            
             //* Getting playlist Number from Playlist Table
             const getplaylistId = await pool.query(
                 "SELECT id from playlist WHERE title = ($1)",[playlist_id]
@@ -42,6 +45,7 @@ router.route('/tracks')
                 return (getplaylistId.rows[0].id == data.playlist_id && data.title == title)
             })
             console.log(result);
+
             if(result.length != 0){
                 res.status(409).json(`${title} already exists in ${playlist_id}`);
             } else{
