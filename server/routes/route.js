@@ -30,10 +30,8 @@ router.route('/tracks')
     .post( async( req,res )=>{
         try {
             const {  uri, title, playlist_id } = req.body;
-            
             //* fetching Data from the track table to see if data already exist
             const response = await getData("track");
-
             
             //* Getting playlist Number from Playlist Table
             const getplaylistId = await pool.query(

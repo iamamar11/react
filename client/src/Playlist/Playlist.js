@@ -43,9 +43,11 @@ class Playlist extends Component{
             <div className="mainContainer">
             <table className="listConatiner">
                 <thead className="tableHead">
-                    <td>Song Title</td>
-                    <td>Playlist Number</td>
-                    <td>Action</td>
+                    <tr>
+                        <th>Song Title</th>
+                        <th>Playlist Number</th>
+                        <th>Action</th>
+                    </tr>
                 </thead>
                 <tbody>
                     {this.state.jsxData}

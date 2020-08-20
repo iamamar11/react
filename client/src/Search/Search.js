@@ -30,6 +30,7 @@ class Search extends Component{
       }
     // Adding to playlist
     AddToTrack = async(title,uri) => {
+        console.log("CLICK WORKS");
         console.log(title,uri,this.state.result);
         try {
             const API_URL = "http://localhost:3001/tracks";
@@ -40,11 +41,10 @@ class Search extends Component{
                 "playlist_id": this.state.result,
                 "title": title,
                 "uri": uri
+                })
             })
-        })
-        const result = await response.json();
-        typeof(result) == 'object'?alert(`${title} added to ${this.state.result} playlist`):alert(result);
-
+            const result = await response.json();
+            typeof(result) == 'object'?alert(`${title} added to ${this.state.result} playlist`):alert(result);
         } catch (error) {
             console.log(error.message);
         }
@@ -62,7 +62,7 @@ class Search extends Component{
                     thumb = {element.thumb}
                     title = {element.title}
                     clickSelect = {this.handleSelectChange}
-                    clickButton = {this.AddToTrack}
+                    clickButton = {() => {this.AddToTrack(element.title, element.uri)}}
                     jsx = {this.state.jsxoption}
                 />
             );
