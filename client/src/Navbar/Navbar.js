@@ -7,7 +7,7 @@ class Navbar extends Component{
     render(){
         return(
             <header>
-            <i class="fab fa-spotify fa-2x"><span> Spotify</span></i>
+            <i class="fab fa-spotify fa-2x"><span>{this.props.logo}</span></i>
                 <nav className = "nav">
                     <ul className = "list">
                         <Link to = '/'>

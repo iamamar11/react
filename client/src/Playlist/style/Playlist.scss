@@ -1,5 +1,3 @@
-@import '../../style/mixins.scss';
-
 .mainContainer::before{
     content: '';
     height: 100%;
@@ -15,6 +13,7 @@
 
 }
 .mainContainer{
+
     .listConatiner{
         padding: 15px;
         width: 70%;
@@ -36,14 +35,20 @@
             color: white;
             text-align: center;
             line-height: 45px;
+            &:hover{
+                transform: scale(1.02);
+                background-image: linear-gradient(to right, #21e6c1 ,#278ea5);;
+                transition: .7s ease;
+            }
             span,p{
                 padding: 10px;
             }
-            button{
-                @include button(red);
-                width: 100px;
-                padding: 10px 8px;
-
+            .delete{
+                color: red;
+                &:hover{
+                    transform: scale(1.2);
+                    transition:  .5s ease;
+                }
             }
         }
     }

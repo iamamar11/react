@@ -10,7 +10,6 @@ class Search extends Component{
             jsxoption : [],
             result : ''
         }
-        this.myRef = React.createRef();
     }
     // fetching enteries for creating the drop down menu
     fetchPlaylistName = async() => {
@@ -30,7 +29,6 @@ class Search extends Component{
       }
     // Adding to playlist
     AddToTrack = async(title,uri) => {
-        console.log("CLICK WORKS");
         console.log(title,uri,this.state.result);
         try {
             const API_URL = "http://localhost:3001/tracks";
@@ -62,7 +60,7 @@ class Search extends Component{
                     thumb = {element.thumb}
                     title = {element.title}
                     clickSelect = {this.handleSelectChange}
-                    clickButton = {() => {this.AddToTrack(element.title, element.uri)}}
+                    clickButton = {() => this.AddToTrack(element.title, element.uri)}
                     jsx = {this.state.jsxoption}
                 />
             );

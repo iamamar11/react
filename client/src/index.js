@@ -10,7 +10,7 @@ import Search from './Search/Search';
 ReactDOM.render(
   <main>
     <Router>
-      <Navbar/>
+      <Navbar logo={"Amplify"} />
         <Switch>
           <Route path='/' exact component={Body} />
           <Route path='/playlist' component={Playlist} />

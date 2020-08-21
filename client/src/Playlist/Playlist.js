@@ -1,12 +1,15 @@
 import React, {Component} from 'react';
 import './style/Playlist.scss';
 
-
 class Playlist extends Component{
     constructor(porps) {
         super(porps);
         this.state = {
-            jsxData : []
+            jsxData : [],
+            jsxOption : [],
+            result : 1,
+            songs : ''
+            
         }
     }
     async deleteItem(id){
@@ -18,41 +21,69 @@ class Playlist extends Component{
         this.componentDidMount()
     }
 
-    async fetchData(props){
-        const API_URL = "http://localhost:3001/tracks";
-        const response = await fetch(API_URL, {method: 'GET'});
-        const jsonData = await response.json();
-        const result = jsonData.map((element, index) => {
-            return  <tr className="tableRow" key={element.id}>    
+
+    handleSelectChange = (event) => {
+        this.setState({
+          result: event.target.value
+        })
+      }
+
+    // fetching enteries for creating the drop down menu
+    fetchPlaylistName = async() => {
+        const API_URL = `http://localhost:3001/playlist`;
+        const response = await fetch(API_URL, {method : 'GET'});
+        const result = await response.json();
+        const optionTag = result.map(element => {
+            return <option className="userOption" key={element.playlist_id} data-key={element.playlist_id} value={element.id}>{element.title}</option>
+        });
+        return optionTag;
+    }
+    ShowList = async() => {
+        {console.log(this.state.result)}
+        const API_URL = `http://localhost:3001/tracks/${this.state.result}`;
+        const response = await fetch(API_URL, {method : 'GET'});
+        const responseJson = await response.json();
+        const result = responseJson.map(element => {
+           return <tr className="tableRow" key={element.id}>    
                         <td>{element.title}</td>
                         <td>{element.playlist_id}</td>
-                        <td><button onClick={() => this.deleteItem(element.id)}>DELETE</button></td>
+                        <td><i class="fas fa-minus-circle delete"  onClick={() => this.deleteItem(element.id)}></i></td>
                     </tr>
-            });
-        return result;
+        });
+        this.setState({jsxData: result})
+        return result
     }
+
+
+
     componentDidMount(){
-        this.fetchData().then(result => {
-            console.log(result)
-            this.setState({jsxData : result});
+        this.fetchPlaylistName().then(res => {
+            this.setState({jsxOption : res})
+        } )
+        this.ShowList().then(result => {
+            this.setState({jsxData: result})
         })
     }
 
     render(){
         return(
             <div className="mainContainer">
-            <table className="listConatiner">
-                <thead className="tableHead">
-                    <tr>
-                        <th>Song Title</th>
-                        <th>Playlist Number</th>
-                        <th>Action</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {this.state.jsxData}
-                </tbody>
-            </table>
+                <table className="listConatiner">
+                    <thead className="tableHead">
+                        <tr>
+                            <th>Song Title</th>
+                            <th><select onChange={this.handleSelectChange}>{this.state.jsxOption}</select><button onClick={this.ShowList}>search</button></th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+
+                    {/* Using the condition here to make list display if it has some data */}
+                    {this.state.jsxData !== [] ?
+                    <tbody>
+                        {this.state.jsxData}
+                    </tbody>:null
+                }
+                </table>
             </div>
         );
     }
